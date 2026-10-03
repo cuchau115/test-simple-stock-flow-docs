@@ -250,15 +250,19 @@ app/Application/
 │   ├── Inbound/           ← 5 puertos + DTOs (fuente del contrato)
 │   │   ├── PlaceSale.php · ManageProducts.php · GetSales.php
 │   │   ├── GetSalesReport.php · Authenticate.php
-│   │   ├── PlaceSaleCommand.php
-│   │   ├── ProductView.php · SaleView.php · SaleItemView.php
-│   │   └── SalesReport.php · SalesReportRow.php
-│   │   └── AuthResult.php · PagedResult.php
-│   └── Outbound/          ← 10 puertos
+│   │   ├── PlaceSaleCommand.php · PlaceSaleLine.php
+│   │   ├── AuthenticatedUser.php · AuthResult.php
+│   │   ├── ProductView.php · CategoryView.php
+│   │   ├── SaleView.php · SaleItemView.php
+│   │   ├── SalesReport.php · SalesReportRow.php
+│   │   └── PagedResult.php
+│   └── Outbound/          ← 10 puertos + 3 tipos de apoyo
 │       ├── ProductRepository.php · SaleRepository.php
 │       ├── CategoryRepository.php · UserRepository.php
 │       ├── FileStorage.php · PasswordHasher.php · TokenGenerator.php
-│       └── Clock.php · UnitOfWork.php · SalesReportQuery.php
+│       ├── Clock.php · UnitOfWork.php · SalesReportQuery.php
+│       ├── Token.php · SalesAggregate.php
+│       └── SalesAggregateRow.php
 ├── UseCase/               un caso de uso = una clase
 │   ├── PlaceSaleService.php       (T-10)
 │   ├── ProductCatalogService.php  (T-04)
@@ -267,9 +271,11 @@ app/Application/
 │   └── AuthenticationService.php  (T-06)
 ├── Model/
 │   ├── PageRequest.php    el recorte a 100 es regla de aplicación
-│   └── DateRange.php       `from` inclusivo · `to` exclusivo
+│   ├── DateRange.php       `from` inclusivo · `to` exclusivo
+│   └── Page.php            página de dominio + total, la devuelven los repositorios
 └── Exception/
-    └── ConcurrencyConflict.php   ← la define Application (ADR-002)
+    ├── ConcurrencyConflict.php        ← la define Application (ADR-002), 409
+    └── InvalidDateRangeException.php  ← `to` anterior a `from`, 422
 ```
 
 **Los nombres coinciden con `tasks.md`.** Cada archivo mapea 1:1 contra una tarea. El instructor no necesita traducción.
