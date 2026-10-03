@@ -21,11 +21,18 @@ avanzan a la vez.
 
 ## Decisión
 
-**El commit de documentación va primero, se mergea a `main`, y solo después empieza el código.**
+**El commit de documentación va primero, se mergea a `main` del fork, y solo después empieza el
+código.**
+
+**La revisión ocurre sobre el fork.** La entrega vive en el fork del equipo
+(`cuchau115/test-simple-stock-flow-docs` y `cuchau115/test-simple-stock-flow-api`), y el instructor
+revisa ese fork. Por eso `main` del fork es la fuente de verdad: cada fase se mergea ahí antes de
+empujar la siguiente. El Pull request contra el repositorio del instructor no es requisito —no se
+puede mergear sin permiso de escritura— y, si existe, es solo evidencia.
 
 1. Este commit —`ARQUITECTURA-ONION.md`, los ADR-005 a ADR-010 y el índice del README— es el
-   **primer** cambio en `test-simple-stock-flow-docs`. Se mergea a `main` antes de abrir cualquier
-   Pull request de código.
+   **primer** cambio en `test-simple-stock-flow-docs`. Se mergea a `main` del fork antes de empujar
+   cualquier fase de código.
 2. **Cada quien transcribe, no decide.** Los chats de `api`, `app` y `tool` leen
    `ARQUITECTURA-ONION.md` y lo aplican. Si al leerlo una persona necesita decidir algo que el
    documento no dice, **no decide**: lo escribe y lo manda al grupo. Esa respuesta es un cambio
