@@ -212,18 +212,24 @@ app/Domain/
 │   ├── Category.php       entidad de referencia, solo lectura
 │   └── User.php           raíz de agregado
 ├── ValueObject/
-│   ├── Money.php          Brick\Math\BigDecimal · escala 2 · HALF_UP
+│   ├── Money.php          Brick\Math\BigDecimal · escala 2 · HALF_UP · moneda dentro
 │   ├── Quantity.php       entero > 0
-│   ├── ProductId.php · SaleId.php · CategoryId.php · UserId.php
+│   ├── Uuid.php           forma UUID v4 · `generate` / `of`
+│   ├── ProductId.php · SaleId.php · SaleItemId.php
+│   ├── CategoryId.php · UserId.php
 │   ├── Username.php       normaliza a minúsculas (RN-10)
 │   └── Role.php           admin | seller (RN-11)
 ├── Exception/             mensajes en ESPAÑOL · viajan tal cual al 422
 │   ├── BusinessRuleViolation.php        ← base abstracta
-│   ├── InsufficientStockException.php · InvalidPriceException.php
-│   ├── InvalidQuantityException.php · EmptySaleException.php
-│   ├── RepeatedProductException.php · ProductNotFoundException.php
-│   ├── UnknownCategoryException.php · DuplicateUsernameException.php
-│   └── InvalidRoleException.php · InvalidCredentialsException.php
+│   ├── InvalidNameException.php · InvalidUsernameException.php
+│   ├── InvalidPasswordHashException.php · InvalidStockException.php
+│   ├── InvalidPriceException.php · InvalidQuantityException.php
+│   ├── InvalidRoleException.php · InvalidIdentifierException.php
+│   ├── InsufficientStockException.php · EmptySaleException.php
+│   ├── RepeatedProductException.php · CurrencyMismatchException.php
+│   ├── ProductNotFoundException.php · UnknownCategoryException.php
+│   ├── DuplicateUsernameException.php
+│   └── InvalidCredentialsException.php
 └── Service/               VACÍA hasta que una regla se gane el lugar
     └── .gitkeep
 ```
